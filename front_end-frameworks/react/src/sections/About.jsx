@@ -75,7 +75,7 @@ function About() {
                 {/* Texte */}
                 <div>
                   <h3 className="font-semibold text-slate-50">{step.title}</h3>
-                  <p className="mt-1 text-sm text-slate-400">
+                  <p className="mt-1 text-sm text-slate-500">
                     {step.description}
                   </p>
                 </div>
