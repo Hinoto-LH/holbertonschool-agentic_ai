@@ -22,6 +22,7 @@ function Features() {
             </span>
           </h2>
         </div>
+        {/* Features */}
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {features.map((feature) => (
             <FeatureCard
