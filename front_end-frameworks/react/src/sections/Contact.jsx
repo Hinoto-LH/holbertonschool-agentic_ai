@@ -14,20 +14,41 @@ const DEFAULT_FEEDBACK = "Please fill all required fields.";
 const EMPTY_FORM = { name: "", email: "", message: "" };
 
 function Contact() {
+  // formData : la valeur des trois champs — c'est React qui la détient,
+  //            les inputs ne font que l'afficher (inputs contrôlés).
+  // isSending : vrai pendant l'envoi simulé, sert à bloquer le bouton.
+  // feedback  : le texte affiché sous le bouton.
   const [formData, setFormData] = useState(EMPTY_FORM);
   const [isSending, setIsSending] = useState(false);
   const [feedback, setFeedback] = useState(DEFAULT_FEEDBACK);
 
+  /**
+   * Met à jour le champ qui vient d'être modifié.
+   *
+   * Un seul gestionnaire suffit pour les trois champs : on lit l'attribut
+   * `name` de l'élément déclencheur pour savoir lequel mettre à jour.
+   * Le spread `...prev` préserve les deux autres champs, qui seraient
+   * sinon effacés puisqu'on remplace l'objet entier.
+   */
   function handleChange(event) {
     const { name, value } = event.target;
 
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
+  /**
+   * Simule l'envoi du formulaire.
+   *
+   * Séquence : blocage du bouton → message "envoi en cours" → attente de
+   * 1,5 s → vidage des champs → message de succès → retour au message par
+   * défaut 9 s plus tard.
+   */
   async function handleSubmit(event) {
     // Sans ça, le navigateur rechargerait la page et détruirait l'app
     event.preventDefault();
 
+    // Garde-fou : le bouton est déjà désactivé dans ces deux cas, mais
+    // la touche Entrée dans un champ peut aussi déclencher la soumission.
     if (!isFormValid || isSending) {
       return;
     }
