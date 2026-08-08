@@ -27,8 +27,14 @@ function Hero() {
       {/* Contenu (par-dessus les calques) */}
       <div className="relative mx-auto max-w-6xl text-center">
         {/* Eyebrow */}
-        <p className="m-10 inline-flex rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-          ♦ The future of coding ♦
+        <p className="m-10 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
+          <span aria-hidden="true" className="text-[8px]">
+            ✦
+          </span>
+          The future of coding
+          <span aria-hidden="true" className="text-[8px]">
+            ✦
+          </span>
         </p>
 
         {/* Title */}

@@ -14,7 +14,7 @@ function Insights() {
                 setInsights(data);
             } catch (error) {
                 setErreur("Unable to load the insights.");
-                console.error(error)
+                console.error(error);
             }
         }
         charger();
@@ -26,8 +26,14 @@ function Insights() {
         {/* En-tête centré */}
         <div className="text-center">
           {/* Eyebrow */}
-          <p className="mb-6 inline-flex rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-            ♦ Insights ♦
+          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
+            <span aria-hidden="true" className="text-[8px]">
+              ✦
+            </span>
+            Insights
+            <span aria-hidden="true" className="text-[8px]">
+              ✦
+            </span>
           </p>
 
           {/* Title */}
