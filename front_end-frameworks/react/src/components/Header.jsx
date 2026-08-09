@@ -7,7 +7,7 @@ function Header() {
         {/* Logo + Titre */}
         <div className="flex items-center gap-2 text-slate-50">
           <div className="rounded-lg bg-violet-500 p-2 shadow-violet-500/40">
-            <BrainCircuit />
+            <BrainCircuit size={16}/>
           </div>
           <span className="text-xl text-slate-50">Agentic AI</span>
         </div>
