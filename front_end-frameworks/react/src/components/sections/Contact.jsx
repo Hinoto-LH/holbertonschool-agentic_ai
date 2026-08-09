@@ -1,3 +1,6 @@
+import Button from "../ui/Button";
+import SectionTitle from "../ui/SectionTitle";
+import SectionBadge from "../ui/SectionBadge";
 import {
   ArrowRight,
   FolderCode,
@@ -104,40 +107,28 @@ function Contact() {
         {/* En-tête centré : un seul gap uniforme entre tous les blocs */}
         <div className="flex flex-col items-center gap-8 text-center">
           {/* Eyebrow */}
-          <p className="inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-            <span aria-hidden="true" className="text-[8px]">
-              ✦
-            </span>
-            Start your AI journey
-            <span aria-hidden="true" className="text-[8px]">
-              ✦
-            </span>
-          </p>
+          <SectionBadge>Start your AI journey</SectionBadge>
 
           {/* Title */}
-          <h2 className="text-5xl leading-none font-black tracking-tight md:text-7xl">
-            <span className="block text-slate-50">Ready to Explore</span>
-            <span className="block text-violet-300">Agentic AI?</span>
-          </h2>
+          <SectionTitle size="lg" highlight="Agentic AI?">
+            Ready to Explore
+          </SectionTitle>
           {/* CTA / Button */}
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
               href="https://www.holbertonschool.fr/rejoindre-lhippocamp"
-              className="inline-flex gap-2 rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600"
+              external
             >
               Enroll at Holberton School <ArrowRight size={18} />
-            </a>
+            </Button>
 
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
+            <Button
               href="https://www.holbertonschool.fr/admission"
-              className="inline-flex rounded-md border border-slate-800 bg-slate-950 px-4 py-2 font-semibold text-slate-50 hover:bg-slate-900"
+              variant="secondary"
+              external
             >
               Need more information?
-            </a>
+            </Button>
           </div>
 
           {/* Highlights */}
@@ -223,17 +214,13 @@ function Contact() {
               />
             </div>
 
-            <button
+            <Button
               type="submit"
               disabled={!isFormValid || isSending}
-              className={`w-full rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 transition ${
-                isFormValid && !isSending
-                  ? "cursor-pointer hover:bg-violet-600"
-                  : "cursor-not-allowed opacity-60"
-              }`}
+              className="w-full"
             >
               {isSending ? "Sending..." : "Send message"}
-            </button>
+            </Button>
 
             {/* min-h-5 réserve la hauteur : le texte changera sans décaler la carte */}
             <p className="min-h-5 text-sm text-slate-500">{feedback}</p>

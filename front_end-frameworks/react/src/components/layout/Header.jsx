@@ -1,16 +1,12 @@
-import { BrainCircuit } from "lucide-react";
+import Button from "../ui/Button";
+import Brand from "../ui/Brand";
 
 function Header() {
   return (
     <header className="fixed top-0 right-0 left-0 z-50 bg-slate-950">
       <div className="mx-auto flex items-center justify-between px-4 py-4 md:px-8 lg:px-20">
         {/* Logo + Titre */}
-        <div className="flex items-center gap-2 text-slate-50">
-          <div className="rounded-lg bg-violet-500 p-2 shadow-violet-500/40">
-            <BrainCircuit size={16}/>
-          </div>
-          <span className="text-xl text-slate-50">Agentic AI</span>
-        </div>
+        <Brand size="lg" />
         <div className="flex items-center gap-6">
           {/* Navbar */}
           <nav className="hidden md:flex">
@@ -31,9 +27,7 @@ function Header() {
           </nav>
 
           {/* CTA */}
-          <button className="rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600">
-            Enroll now
-          </button>
+          <Button>Enroll now</Button>
         </div>
       </div>
     </header>

@@ -1,6 +1,8 @@
+import SectionTitle from "../ui/SectionTitle";
+import SectionBadge from "../ui/SectionBadge";
 import { useState, useEffect } from "react";
-import InsightCard from "../components/InsightCard";
-import getInsights from "../services/insightsService";
+import InsightCard from "../cards/InsightCard";
+import getInsights from "../../services/insightsService";
 
 
 function Insights() {
@@ -26,25 +28,12 @@ function Insights() {
         {/* En-tête centré */}
         <div className="text-center">
           {/* Eyebrow */}
-          <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-            <span aria-hidden="true" className="text-[8px]">
-              ✦
-            </span>
-            Insights
-            <span aria-hidden="true" className="text-[8px]">
-              ✦
-            </span>
-          </p>
+          <SectionBadge className="mb-6">Insights</SectionBadge>
 
           {/* Title */}
-          <h2 className="text-4xl leading-none font-black tracking-tight md:text-5xl">
-            <span className="block text-slate-50">
-              Explore Agentic AI
-            </span>
-            <span className="block text-violet-300">
-              Through real-world scenes
-            </span>
-          </h2>
+          <SectionTitle highlight="Through real-world scenes">
+            Explore Agentic AI
+          </SectionTitle>
         </div>
 
         {erreur && <p className="text-slate-50 text-sm ">{erreur}</p>}

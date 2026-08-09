@@ -1,12 +1,11 @@
+import StatCard from "../cards/StatCard";
+import stats from "../../data/stats";
+import Button from "../ui/Button";
+import SectionTitle from "../ui/SectionTitle";
+import SectionBadge from "../ui/SectionBadge";
 import { ArrowRight } from "lucide-react";
 
 function Hero() {
-  const stats = [
-    { value: "10K+", label: "Active agents" },
-    { value: "99.9%", label: "Uptime" },
-    { value: "50M+", label: "Tasks automated" },
-    { value: "24/7", label: "Support" },
-  ];
   return (
     <section
       id="hero-section"
@@ -27,21 +26,12 @@ function Hero() {
       {/* Contenu (par-dessus les calques) */}
       <div className="relative mx-auto max-w-6xl text-center">
         {/* Eyebrow */}
-        <p className="m-10 inline-flex items-center gap-2 rounded-full border border-violet-500/20 bg-violet-500/10 px-4 py-2 text-xs text-violet-300">
-          <span aria-hidden="true" className="text-[8px]">
-            ✦
-          </span>
-          The future of coding
-          <span aria-hidden="true" className="text-[8px]">
-            ✦
-          </span>
-        </p>
+        <SectionBadge className="m-10">The future of coding</SectionBadge>
 
         {/* Title */}
-        <h1 className="pb-10 text-5xl leading-none font-black tracking-tight md:text-7xl">
-          <span className="block text-slate-50">Build smarter workflows</span>
-          <span className="block text-violet-300">with Agentic AI</span>
-        </h1>
+        <SectionTitle as="h1" size="lg" className="pb-10" highlight="with Agentic AI">
+          Build smarter workflows
+        </SectionTitle>
 
         {/* Description */}
         <p className="pb-10 text-sm text-slate-300 md:text-base">
@@ -51,31 +41,19 @@ function Hero() {
 
         {/* CTA / Button */}
         <div className="flex flex-col items-center justify-center gap-4 pb-20 sm:flex-row">
-          <a
-            href="#"
-            className="inline-flex gap-2 rounded-md bg-violet-500 px-4 py-2 font-semibold text-slate-50 shadow-lg shadow-violet-500/40 hover:bg-violet-600"
-          >
+          <Button href="#">
             Start learning with Holberton School <ArrowRight size={18} />
-          </a>
+          </Button>
 
-          <a
-            href="#"
-            className="inline-flex rounded-md border border-slate-800 bg-slate-950 px-4 py-2 font-semibold text-slate-50 hover:bg-slate-900"
-          >
+          <Button href="#" variant="secondary">
             Methodology
-          </a>
+          </Button>
         </div>
 
         {/* Stats */}
         <div className="grid grid-cols-2 gap-8 pb-10 md:grid-cols-4">
           {stats.map((stat) => (
-            <div
-              key={stat.label}
-              className="rounded-xl border border-slate-800 bg-slate-950 p-6 shadow-xl shadow-slate-950/40"
-            >
-              <p className="text-3xl font-bold text-violet-300">{stat.value}</p>
-              <p className="text-sm text-slate-500">{stat.label}</p>
-            </div>
+            <StatCard key={stat.label} {...stat} />
           ))}
         </div>
       </div>

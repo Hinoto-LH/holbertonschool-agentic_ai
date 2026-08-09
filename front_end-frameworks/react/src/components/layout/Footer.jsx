@@ -1,6 +1,6 @@
-import { BrainCircuit } from "lucide-react";
-
-import socials from "../data/socials";
+import Brand from "../ui/Brand";
+import SocialLink from "../ui/SocialLink";
+import socials from "../../data/socials";
 
 const navLinks = [
   { label: "Hero section", href: "#hero-section" },
@@ -62,12 +62,7 @@ function Footer() {
       <div className="mx-auto grid max-w-6xl gap-8 pt-24 pb-12 md:grid-cols-5">
         {/* Marque */}
         <div className="flex flex-col items-start gap-4 md:col-span-2">
-          <a href="#hero-section" className="flex items-center gap-2">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-violet-500 text-slate-50 shadow-lg shadow-violet-500/40">
-              <BrainCircuit size={16} />
-            </div>
-            <span className="text-sm font-bold text-slate-50">Agentic AI</span>
-          </a>
+          <Brand href="#hero-section" />
 
           <p className="text-xs text-slate-500">
             Explore the future of development with Agentic AI.
@@ -77,25 +72,7 @@ function Footer() {
               d'écran annoncerait quatre fois « lien » */}
           <div className="flex items-center gap-2">
             {socials.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={social.name}
-                className="flex h-8 w-8 items-center justify-center rounded-md border border-slate-800 bg-slate-950 text-slate-50 shadow-xl shadow-slate-950/40 transition hover:bg-violet-500 hover:shadow-violet-500/40"
-              >
-                {/* Logos de marque = formes pleines (fill), contrairement
-                    à lucide qui dessine des traits (stroke).  a reexpliquer */}
-                <svg
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                  className="h-4 w-4"
-                >
-                  <path d={social.path} />
-                </svg>
-              </a>
+              <SocialLink key={social.name} {...social} />
             ))}
           </div>
         </div>
