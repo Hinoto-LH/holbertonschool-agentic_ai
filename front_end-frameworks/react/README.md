@@ -6,8 +6,13 @@
 
 Vite est un outil de build frontend qui sert le code source pendant le
 developpement via des modules ES natifs, ce qui rend le rechargement quasi
-instantane (Hot Module Replacement). Pour la production, il utilise Rollup
-pour generer un bundle optimise.
+instantane (Hot Module Replacement). Pour la production, il utilise Rolldown,
+un bundler ecrit en Rust, pour generer un bundle optimise.
+
+Depuis la version 8, Vite a remplace ses deux briques historiques : Rollup par
+Rolldown pour le bundling, et esbuild par Oxc pour les transformations. C'est
+pour cette raison que les erreurs de compilation du projet sont signalees par
+`[plugin:vite:oxc]`.
 
 ### What is React
 
