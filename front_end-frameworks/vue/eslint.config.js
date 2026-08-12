@@ -14,6 +14,10 @@ export default defineConfig([
       globals: globals.browser,
     },
     rules: {
+      // Desactive volontairement : la migration conserve les noms du projet
+      // React (Brand, Button...). La regle existe pour eviter les collisions
+      // avec les balises HTML natives, ce qui n'est pas le cas ici.
+      "vue/multi-word-component-names": "off",
       quotes: ["error", "double"],
       semi: ["error", "always"],
       "no-unused-vars": [
