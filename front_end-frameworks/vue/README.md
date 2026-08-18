@@ -4,67 +4,67 @@
 
 ### What is Vue.js
 
-Vue.js est un framework JavaScript progressif utilise pour construire des
-interfaces utilisateur. Il repose sur des composants reutilisables et sur un
-systeme de reactivite qui met a jour automatiquement le DOM quand les donnees
-changent. On dit qu'il est progressif parce qu'on peut l'ajouter a une page
-existante comme simple bibliotheque, ou l'utiliser comme socle d'une
-application complete.
+Vue.js est un framework JavaScript progressif utilisé pour construire des
+interfaces utilisateur. Il repose sur des composants réutilisables et sur un
+système de réactivité qui met à jour automatiquement le DOM quand les données
+changent. On dit qu'il est progressif parce qu'on peut l'ajouter à une page
+existante comme simple bibliothèque, ou l'utiliser comme socle d'une
+application complète.
 
 ### What is a frontend framework
 
 Un framework frontend est un ensemble d'outils et de conventions qui structure
-le developpement d'une interface utilisateur. Il prend en charge les taches
-repetitives : mise a jour du DOM, gestion de l'etat, decoupage en composants,
-routage, cycle de vie. Sans framework, il faudrait ecrire manuellement chaque
-manipulation du DOM et synchroniser soi-meme l'affichage avec les donnees.
+le développement d'une interface utilisateur. Il prend en charge les tâches
+répétitives : mise à jour du DOM, gestion de l'état, découpage en composants,
+routage, cycle de vie. Sans framework, il faudrait écrire manuellement chaque
+manipulation du DOM et synchroniser soi-même l'affichage avec les données.
 
 ### Why multiple frontend frameworks exist
 
-Parce qu'il n'existe pas une seule bonne reponse aux memes problemes. Chaque
-framework fait des compromis differents entre performance, taille du bundle,
-courbe d'apprentissage, souplesse et rigueur. React privilegie l'expressivite
-de JavaScript, Vue la lisibilite des templates, Svelte la compilation en amont
+Parce qu'il n'existe pas une seule bonne réponse aux mêmes problèmes. Chaque
+framework fait des compromis différents entre performance, taille du bundle,
+courbe d'apprentissage, souplesse et rigueur. React privilégie l'expressivité
+de JavaScript, Vue la lisibilité des templates, Svelte la compilation en amont
 pour supprimer le runtime. S'y ajoutent des raisons historiques et
-industrielles : React est ne chez Meta, Vue d'un projet independant, Angular
+industrielles : React est né chez Meta, Vue d'un projet indépendant, Angular
 chez Google.
 
 ### Why frontend frameworks share similar concepts
 
-Parce qu'ils resolvent tous le meme probleme de fond : garder l'interface
-synchronisee avec des donnees qui changent. Cela conduit naturellement aux
-memes idees, quel que soit le framework :
+Parce qu'ils résolvent tous le même problème de fond : garder l'interface
+synchronisée avec des données qui changent. Cela conduit naturellement aux
+mêmes idées, quel que soit le framework :
 
-- des composants pour decouper l'interface
-- un etat local propre a chaque composant
-- des donnees descendantes (props) du parent vers l'enfant
-- un re-rendu declenche par le changement d'etat
-- un cycle de vie pour agir au montage et au demontage
+- des composants pour découper l'interface
+- un état local propre à chaque composant
+- des données descendantes (props) du parent vers l'enfant
+- un re-rendu déclenché par le changement d'état
+- un cycle de vie pour agir au montage et au démontage
 
-Apprendre l'un rend donc le suivant beaucoup plus rapide a acquerir.
+Apprendre l'un rend donc le suivant beaucoup plus rapide à acquérir.
 
 ### Why frontend frameworks use different syntaxes
 
-Parce que la syntaxe traduit une philosophie. React considere que le balisage
-est du JavaScript, d'ou JSX : on utilise `map`, les ternaires et les fonctions
-natives du langage. Vue considere que le balisage est du HTML enrichi, d'ou les
+Parce que la syntaxe traduit une philosophie. React considère que le balisage
+est du JavaScript, d'où JSX : on utilise `map`, les ternaires et les fonctions
+natives du langage. Vue considère que le balisage est du HTML enrichi, d'où les
 templates et les directives `v-for`, `v-if`, `v-model`. Les deux produisent le
-meme resultat, mais l'un demande de connaitre JavaScript, l'autre offre un
-vocabulaire dedie plus vite lisible.
+même résultat, mais l'un demande de connaître JavaScript, l'autre offre un
+vocabulaire dédié plus vite lisible.
 
 ## Vue.js
 
 ### What is a Vue component
 
-Un composant Vue est un bloc autonome qui reunit sa structure, sa logique et
-son style. Il expose des props pour recevoir des donnees, emet des evenements
-pour communiquer vers son parent, et gere son propre etat interne. C'est
-l'equivalent d'un composant React, avec une organisation de fichier
-differente.
+Un composant Vue est un bloc autonome qui réunit sa structure, sa logique et
+son style. Il expose des props pour recevoir des données, émet des événements
+pour communiquer vers son parent, et gère son propre état interne. C'est
+l'équivalent d'un composant React, avec une organisation de fichier
+différente.
 
 ### What is a Single File Component (SFC)
 
-Un SFC est un fichier `.vue` qui regroupe trois blocs pour un meme composant :
+Un SFC est un fichier `.vue` qui regroupe trois blocs pour un même composant :
 
 ```vue
 <script setup>
@@ -85,26 +85,26 @@ button {
 ```
 
 `<template>` contient le balisage, `<script setup>` la logique, `<style>` les
-styles. L'attribut `scoped` limite ces styles au seul composant, ce qui evite
-les collisions de noms de classes. C'est une difference notable avec React,
-qui n'a pas de solution native equivalente.
+styles. L'attribut `scoped` limite ces styles au seul composant, ce qui évite
+les collisions de noms de classes. C'est une différence notable avec React,
+qui n'a pas de solution native équivalente.
 
 ### What is the Composition API
 
-La Composition API est la maniere moderne d'ecrire la logique d'un composant
-Vue 3. On declare l'etat et les fonctions directement dans `<script setup>`,
+La Composition API est la manière moderne d'écrire la logique d'un composant
+Vue 3. On déclare l'état et les fonctions directement dans `<script setup>`,
 en important ce dont on a besoin (`ref`, `computed`, `onMounted`).
 
 Elle remplace l'ancienne Options API, qui rangeait le code dans des objets
-predefinis (`data`, `methods`, `computed`). L'avantage principal est de pouvoir
-regrouper le code par fonctionnalite plutot que par type : toute la logique
-d'un formulaire reste au meme endroit au lieu d'etre eclatee entre trois
+prédéfinis (`data`, `methods`, `computed`). L'avantage principal est de pouvoir
+regrouper le code par fonctionnalité plutôt que par type : toute la logique
+d'un formulaire reste au même endroit au lieu d'être éclatée entre trois
 sections.
 
 ### What is a ref
 
-`ref` cree une reference reactive autour d'une valeur. Vue surveille cette
-reference et met a jour l'interface des que la valeur change.
+`ref` crée une référence réactive autour d'une valeur. Vue surveille cette
+référence et met à jour l'interface dès que la valeur change.
 
 ```vue
 <script setup>
@@ -122,16 +122,16 @@ function increment() {
 </template>
 ```
 
-Le point d'attention est le `.value` : dans le script, on lit et on ecrit
-toujours `count.value`. Dans le template, Vue le deballe automatiquement, donc
-on ecrit simplement `count`. Cette asymetrie est la source d'erreur la plus
-frequente chez les debutants.
+Le point d'attention est le `.value` : dans le script, on lit et on écrit
+toujours `count.value`. Dans le template, Vue le déballe automatiquement, donc
+on écrit simplement `count`. Cette asymétrie est la source d'erreur la plus
+fréquente chez les débutants.
 
 ### What is reactive data
 
-Une donnee reactive est une donnee que le framework surveille : toute
-modification declenche la mise a jour des parties de l'interface qui en
-dependent. En Vue, on la cree avec `ref` pour une valeur simple, ou avec
+Une donnée réactive est une donnée que le framework surveille : toute
+modification déclenche la mise à jour des parties de l'interface qui en
+dépendent. En Vue, on la crée avec `ref` pour une valeur simple, ou avec
 `reactive` pour un objet.
 
 ```js
@@ -144,15 +144,15 @@ count.value = 1;
 form.name = "Ada";
 ```
 
-`reactive` evite le `.value`, mais il ne fonctionne que sur des objets et perd
-sa reactivite si on le destructure. En pratique, `ref` est recommande par
-defaut car son comportement est plus previsible.
+`reactive` évite le `.value`, mais il ne fonctionne que sur des objets et perd
+sa réactivité si on le destructure. En pratique, `ref` est recommandé par
+défaut car son comportement est plus prévisible.
 
 ### What is v-model
 
-`v-model` cree une liaison bidirectionnelle entre un champ de formulaire et une
-donnee reactive : quand l'utilisateur tape, la donnee se met a jour, et quand
-la donnee change, le champ se met a jour.
+`v-model` crée une liaison bidirectionnelle entre un champ de formulaire et une
+donnée réactive : quand l'utilisateur tape, la donnée se met à jour, et quand
+la donnée change, le champ se met à jour.
 
 ```vue
 <script setup>
@@ -167,13 +167,13 @@ const name = ref("");
 </template>
 ```
 
-C'est un raccourci : Vue applique en realite une liaison `:value` et un
-ecouteur `@input`. C'est exactement le travail que React demande d'ecrire a la
+C'est un raccourci : Vue applique en réalité une liaison `:value` et un
+écouteur `@input`. C'est exactement le travail que React demande d'écrire à la
 main avec `value` et `onChange`.
 
 ### What is v-for
 
-`v-for` est la directive qui repete un element pour chaque entree d'un tableau.
+`v-for` est la directive qui répète un élément pour chaque entrée d'un tableau.
 
 ```vue
 <template>
@@ -183,35 +183,35 @@ main avec `value` et `onChange`.
 </template>
 ```
 
-L'attribut `:key` joue le meme role que la prop `key` en React : il donne une
-identite stable a chaque element pour que Vue sache lequel reutiliser entre
+L'attribut `:key` joue le même rôle que la prop `key` en React : il donne une
+identité stable à chaque élément pour que Vue sache lequel réutiliser entre
 deux rendus. Comme en React, il faut une valeur unique et stable, jamais
 l'index si la liste peut changer d'ordre.
 
 ### What is v-if
 
-`v-if` affiche un element seulement si une condition est vraie. Il s'accompagne
+`v-if` affiche un élément seulement si une condition est vraie. Il s'accompagne
 de `v-else-if` et `v-else`.
 
 ```vue
 <template>
   <p v-if="error">{{ error }}</p>
   <p v-else-if="isLoading">Chargement...</p>
-  <p v-else>Pret.</p>
+  <p v-else>Prêt.</p>
 </template>
 ```
 
-A ne pas confondre avec `v-show`, qui garde l'element dans le DOM et se
+À ne pas confondre avec `v-show`, qui garde l'élément dans le DOM et se
 contente de basculer `display: none`. On choisit `v-if` quand la condition
-change rarement, `v-show` quand elle bascule souvent, pour eviter de
-detruire et recreer l'element sans arret.
+change rarement, `v-show` quand elle bascule souvent, pour éviter de
+détruire et recréer l'élément sans arrêt.
 
 ### What is onMounted
 
-`onMounted` est un hook de cycle de vie : la fonction qu'on lui passe s'execute
-une fois, juste apres que le composant a ete insere dans le DOM. C'est
-l'endroit prevu pour les effets de bord : chargement de donnees, mise en place
-d'un ecouteur, initialisation d'une bibliotheque tierce.
+`onMounted` est un hook de cycle de vie : la fonction qu'on lui passe s'exécute
+une fois, juste après que le composant a été inséré dans le DOM. C'est
+l'endroit prévu pour les effets de bord : chargement de données, mise en place
+d'un écouteur, initialisation d'une bibliothèque tierce.
 
 ```vue
 <script setup>
@@ -225,28 +225,28 @@ onMounted(async () => {
 </script>
 ```
 
-Ses equivalents pour les autres moments du cycle de vie sont `onUpdated` et
+Ses équivalents pour les autres moments du cycle de vie sont `onUpdated` et
 `onUnmounted`.
 
 ### How Vue.js reactivity works
 
-Vue 3 enveloppe les donnees reactives dans un `Proxy`, un objet JavaScript
-capable d'intercepter chaque lecture et chaque ecriture.
+Vue 3 enveloppe les données réactives dans un `Proxy`, un objet JavaScript
+capable d'intercepter chaque lecture et chaque écriture.
 
-Pendant le rendu, Vue enregistre quelles donnees ont ete lues par quel
-composant : c'est le suivi des dependances. Quand une de ces donnees est
-modifiee, Vue sait exactement quels composants en dependent et ne re-execute
-que ceux-la.
+Pendant le rendu, Vue enregistre quelles données ont été lues par quel
+composant : c'est le suivi des dépendances. Quand une de ces données est
+modifiée, Vue sait exactement quels composants en dépendent et ne réexécute
+que ceux-là.
 
-C'est la difference fondamentale avec React. React ne surveille rien : quand on
-appelle un setter, il re-execute la fonction du composant entiere et compare le
-resultat avec le rendu precedent. Vue sait a l'avance quoi mettre a jour, React
-le decouvre apres coup en comparant.
+C'est la différence fondamentale avec React. React ne surveille rien : quand on
+appelle un setter, il réexécute la fonction du composant entière et compare le
+résultat avec le rendu précédent. Vue sait à l'avance quoi mettre à jour, React
+le découvre après coup en comparant.
 
 ### How to create Vue components
 
-On cree un fichier `.vue` par composant, avec une majuscule au debut du nom, et
-on l'importe la ou on en a besoin.
+On crée un fichier `.vue` par composant, avec une majuscule au début du nom, et
+on l'importe là où on en a besoin.
 
 ```vue
 <!-- src/components/ui/Button.vue -->
@@ -272,12 +272,12 @@ import Button from "./components/ui/Button.vue";
 </template>
 ```
 
-`defineProps` est une macro du compilateur : elle n'a pas besoin d'etre
-importee dans `<script setup>`.
+`defineProps` est une macro du compilateur : elle n'a pas besoin d'être
+importée dans `<script setup>`.
 
 ### How to organize a Vue project
 
-L'organisation est la meme que pour un projet React, seule l'extension des
+L'organisation est la même que pour un projet React, seule l'extension des
 fichiers change :
 
 ```
@@ -293,17 +293,17 @@ src/
   main.js
 ```
 
-On separe les composants selon leur role : `layout` pour l'ossature de la page,
-`sections` pour les grands blocs, `cards` pour les elements repetes, `ui` pour
-les petits composants reutilisables. Les donnees et les appels reseau restent
+On sépare les composants selon leur rôle : `layout` pour l'ossature de la page,
+`sections` pour les grands blocs, `cards` pour les éléments répétés, `ui` pour
+les petits composants réutilisables. Les données et les appels réseau restent
 en dehors des composants, dans `data` et `services`.
 
 ### How to manage reactive state
 
-Pour l'etat local d'un composant, on utilise `ref` ou `reactive` dans
-`<script setup>`. Pour une valeur calculee a partir d'un autre etat, on utilise
-`computed`, qui met en cache le resultat et ne le recalcule que si une de ses
-dependances change.
+Pour l'état local d'un composant, on utilise `ref` ou `reactive` dans
+`<script setup>`. Pour une valeur calculée à partir d'un autre état, on utilise
+`computed`, qui met en cache le résultat et ne le recalcule que si une de ses
+dépendances change.
 
 ```js
 import { ref, computed } from "vue";
@@ -312,12 +312,12 @@ const items = ref([]);
 const total = computed(() => items.value.length);
 ```
 
-Pour un etat partage entre plusieurs composants eloignes, on utilise une
-bibliotheque dediee comme Pinia, equivalent de Redux ou Zustand cote React.
+Pour un état partagé entre plusieurs composants éloignés, on utilise une
+bibliothèque dédiée comme Pinia, équivalent de Redux ou Zustand côté React.
 
 ### How to bind data to the UI
 
-Trois formes de liaison couvrent la quasi-totalite des besoins :
+Trois formes de liaison couvrent la quasi-totalité des besoins :
 
 ```vue
 <template>
@@ -328,23 +328,23 @@ Trois formes de liaison couvrent la quasi-totalite des besoins :
 ```
 
 - les doubles accolades `{{ }}` pour interpoler du texte
-- `:` (raccourci de `v-bind`) pour lier un attribut a une expression
+- `:` (raccourci de `v-bind`) pour lier un attribut à une expression
 - `v-model` pour une liaison bidirectionnelle sur un champ de formulaire
 
 ### How to handle user interactions
 
-On ecoute un evenement avec `@` (raccourci de `v-on`).
+On écoute un événement avec `@` (raccourci de `v-on`).
 
 ```vue
 <template>
-  <button @click="increment">Incrementer</button>
+  <button @click="increment">Incrémenter</button>
   <form @submit.prevent="handleSubmit">...</form>
 </template>
 ```
 
-Les modificateurs sont une specificite de Vue : `.prevent` appelle
+Les modificateurs sont une spécificité de Vue : `.prevent` appelle
 `preventDefault()` pour nous, `.stop` appelle `stopPropagation()`, `.once`
-limite l'ecouteur a un seul declenchement. En React, il faut ecrire ces appels
+limite l'écouteur à un seul déclenchement. En React, il faut écrire ces appels
 explicitement dans le gestionnaire.
 
 ### How to render dynamic content
@@ -366,8 +366,8 @@ On combine `v-for` pour les listes et `v-if` pour les conditions.
 </template>
 ```
 
-Le principe est identique a React : on part d'un tableau de donnees et on
-produit un element par entree, avec une cle unique.
+Le principe est identique à React : on part d'un tableau de données et on
+produit un élément par entrée, avec une clé unique.
 
 ## React vs Vue.js
 
@@ -375,15 +375,15 @@ produit un element par entree, avec une cle unique.
 
 Les deux frameworks partagent l'essentiel :
 
-- une architecture a base de composants reutilisables
-- des donnees descendantes du parent vers l'enfant via les props
-- un etat local declenchant la mise a jour de l'interface
-- un DOM virtuel pour limiter les manipulations reelles du DOM
+- une architecture à base de composants réutilisables
+- des données descendantes du parent vers l'enfant via les props
+- un état local déclenchant la mise à jour de l'interface
+- un DOM virtuel pour limiter les manipulations réelles du DOM
 - des hooks de cycle de vie
-- le meme outillage : Vite, ESLint, Prettier, Tailwind CSS
+- le même outillage : Vite, ESLint, Prettier, Tailwind CSS
 
-Un composant React et un composant Vue expriment la meme idee avec une syntaxe
-differente. C'est pourquoi une migration est surtout un travail de traduction.
+Un composant React et un composant Vue expriment la même idée avec une syntaxe
+différente. C'est pourquoi une migration est surtout un travail de traduction.
 
 ### Differences between React and Vue.js
 
@@ -391,25 +391,25 @@ differente. C'est pourquoi une migration est surtout un travail de traduction.
 |---|---|---|
 | Balisage | JSX, dans du JavaScript | template HTML avec directives |
 | Fichier | `.jsx` | `.vue` (SFC) |
-| Etat local | `useState` | `ref` / `reactive` |
-| Mise a jour | via un setter, immuable | mutation directe de la valeur |
-| Reactivite | re-rendu complet puis comparaison | suivi des dependances |
+| État local | `useState` | `ref` / `reactive` |
+| Mise à jour | via un setter, immuable | mutation directe de la valeur |
+| Réactivité | re-rendu complet puis comparaison | suivi des dépendances |
 | Liste | `.map()` | `v-for` |
 | Condition | `&&` ou ternaire | `v-if` / `v-show` |
 | Formulaire | `value` + `onChange` | `v-model` |
 | Styles | pas de solution native | `<style scoped>` |
-| Nature | bibliotheque | framework |
+| Nature | bibliothèque | framework |
 
 ### JSX versus Vue templates
 
 JSX est du JavaScript : tout ce que le langage permet est disponible, ce qui
-donne une grande liberte mais demande de bien connaitre `map`, les ternaires et
-les operateurs logiques. Les erreurs de syntaxe y sont souvent silencieuses,
-comme une balise en minuscule interpretee comme du HTML.
+donne une grande liberté mais demande de bien connaître `map`, les ternaires et
+les opérateurs logiques. Les erreurs de syntaxe y sont souvent silencieuses,
+comme une balise en minuscule interprétée comme du HTML.
 
 Un template Vue est du HTML enrichi de directives. Il est plus contraint mais
-plus lisible, et le compilateur peut y detecter des erreurs a l'avance. En
-contrepartie, il faut apprendre un vocabulaire specifique.
+plus lisible, et le compilateur peut y détecter des erreurs à l'avance. En
+contrepartie, il faut apprendre un vocabulaire spécifique.
 
 ```jsx
 {items.map((item) => (
@@ -447,11 +447,11 @@ defineProps({ title: String });
 <Card title="Bonjour" />
 ```
 
-Deux differences pratiques. Vue permet de declarer le type attendu et une
-valeur par defaut directement dans `defineProps`, la ou React demande une
-bibliotheque tierce ou TypeScript. Et pour passer autre chose qu'une chaine,
-Vue exige le prefixe `:` (`:count="3"` passe le nombre 3, `count="3"` passe la
-chaine "3"), la ou React utilise les accolades.
+Deux différences pratiques. Vue permet de déclarer le type attendu et une
+valeur par défaut directement dans `defineProps`, là où React demande une
+bibliothèque tierce ou TypeScript. Et pour passer autre chose qu'une chaîne,
+Vue exige le préfixe `:` (`:count="3"` passe le nombre 3, `count="3"` passe la
+chaîne "3"), là où React utilise les accolades.
 
 ### useState versus ref
 
@@ -467,13 +467,13 @@ const count = ref(0);
 count.value++;
 ```
 
-React renvoie une paire valeur / fonction de mise a jour, et interdit de
+React renvoie une paire valeur / fonction de mise à jour, et interdit de
 modifier la valeur directement. Vue renvoie un objet dont on modifie la
-propriete `.value`.
+propriété `.value`.
 
-Consequence importante : en React, la variable d'etat est figee pendant toute
-la duree d'un rendu, donc lire la valeur juste apres avoir appele le setter
-renvoie l'ancienne. En Vue, `count.value` est toujours a jour immediatement.
+Conséquence importante : en React, la variable d'état est figée pendant toute
+la durée d'un rendu, donc lire la valeur juste après avoir appelé le setter
+renvoie l'ancienne. En Vue, `count.value` est toujours à jour immédiatement.
 
 ### useEffect versus onMounted
 
@@ -489,12 +489,12 @@ onMounted(() => {
 });
 ```
 
-`useEffect` avec un tableau de dependances vide equivaut a `onMounted`. Mais
-`useEffect` est plus general : il couvre aussi ce que Vue confie a `watch` et
-`watchEffect` quand on lui donne des dependances.
+`useEffect` avec un tableau de dépendances vide équivaut à `onMounted`. Mais
+`useEffect` est plus général : il couvre aussi ce que Vue confie à `watch` et
+`watchEffect` quand on lui donne des dépendances.
 
-Deux pieges de React disparaissent cote Vue : le callback de `onMounted` peut
-etre `async` directement, et il n'y a pas de tableau de dependances a maintenir.
+Deux pièges de React disparaissent côté Vue : le callback de `onMounted` peut
+être `async` directement, et il n'y a pas de tableau de dépendances à maintenir.
 
 ### Conditional rendering in React versus Vue
 
@@ -510,9 +510,9 @@ etre `async` directement, et il n'y a pas de tableau de dependances a maintenir.
 <List v-else />
 ```
 
-React utilise les operateurs JavaScript, ce qui expose a un piege connu : avec
-un nombre, `0 && <p />` affiche `0` a l'ecran au lieu de ne rien afficher. Vue
-utilise une directive dediee, plus lisible et sans effet de bord.
+React utilise les opérateurs JavaScript, ce qui expose à un piège connu : avec
+un nombre, `0 && <p />` affiche `0` à l'écran au lieu de ne rien afficher. Vue
+utilise une directive dédiée, plus lisible et sans effet de bord.
 
 ### Dynamic rendering in React versus Vue
 
@@ -530,7 +530,7 @@ utilise une directive dediee, plus lisible et sans effet de bord.
 />
 ```
 
-Le principe est identique. `v-bind="feature"` etale toutes les proprietes de
+Le principe est identique. `v-bind="feature"` étale toutes les propriétés de
 l'objet en props, comme le spread `{...feature}` en JSX.
 
 ### Event handling in React versus Vue
@@ -548,14 +548,14 @@ l'objet en props, comme le spread `{...feature}` en JSX.
 <form @submit.prevent="handleSubmit">
 ```
 
-React utilise des props en camelCase auxquelles on passe une reference de
-fonction, sans parenthese. Vue utilise des directives `@` et fournit des
-modificateurs comme `.prevent`, qui evitent d'ecrire `preventDefault()` a la
+React utilise des props en camelCase auxquelles on passe une référence de
+fonction, sans parenthèse. Vue utilise des directives `@` et fournit des
+modificateurs comme `.prevent`, qui évitent d'écrire `preventDefault()` à la
 main.
 
 ### Form management in React versus Vue
 
-C'est la difference la plus visible au quotidien.
+C'est la différence la plus visible au quotidien.
 
 ```jsx
 const [formData, setFormData] = useState({ name: "" });
@@ -578,103 +578,103 @@ const form = reactive({ name: "" });
 </template>
 ```
 
-React demande d'ecrire explicitement le cycle complet : lire la valeur depuis
-l'etat, ecouter la frappe, remettre a jour l'etat. Vue condense tout dans
+React demande d'écrire explicitement le cycle complet : lire la valeur depuis
+l'état, écouter la frappe, remettre à jour l'état. Vue condense tout dans
 `v-model`.
 
-React est plus verbeux mais rend le flux visible, ce qui aide a comprendre ce
-qui se passe. Vue est plus rapide a ecrire, au prix d'un mecanisme masque.
+React est plus verbeux mais rend le flux visible, ce qui aide à comprendre ce
+qui se passe. Vue est plus rapide à écrire, au prix d'un mécanisme masqué.
 
 ### Project organization in React versus Vue
 
-L'organisation des dossiers est identique : separation par role
-(`layout`, `sections`, `cards`, `ui`), donnees dans `data`, appels reseau dans
+L'organisation des dossiers est identique : séparation par rôle
+(`layout`, `sections`, `cards`, `ui`), données dans `data`, appels réseau dans
 `services`.
 
-Les differences sont mineures :
+Les différences sont mineures :
 
 - extension `.vue` au lieu de `.jsx`
-- point d'entree `App.vue` et `main.js` au lieu de `App.jsx` et `main.jsx`
-- les styles peuvent vivre dans le composant grace a `<style scoped>`
+- point d'entrée `App.vue` et `main.js` au lieu de `App.jsx` et `main.jsx`
+- les styles peuvent vivre dans le composant grâce à `<style scoped>`
 - l'import d'un composant Vue exige l'extension : `import Button from "./Button.vue"`
 
 ## AI-assisted Development
 
 ### How AI can assist framework migration
 
-Une migration React vers Vue est un travail de traduction repetitif : les memes
+Une migration React vers Vue est un travail de traduction répétitif : les mêmes
 transformations reviennent des dizaines de fois (`useState` en `ref`, `.map()`
-en `v-for`, `onClick` en `@click`). C'est exactement le genre de tache ou une
+en `v-for`, `onClick` en `@click`). C'est exactement le genre de tâche où une
 IA est efficace.
 
-Elle aide utilement a :
+Elle aide utilement à :
 
 - traduire un composant en conservant sa structure
-- reperer les motifs dupliques a factoriser
-- expliquer un mecanisme inconnu du framework cible
-- proposer l'equivalent d'une API d'un framework a l'autre
-- rediger la documentation et les commentaires
+- repérer les motifs dupliqués à factoriser
+- expliquer un mécanisme inconnu du framework cible
+- proposer l'équivalent d'une API d'un framework à l'autre
+- rédiger la documentation et les commentaires
 
 Elle reste en revanche mauvaise juge de ce qui est correct dans le contexte
-precis d'un projet : conventions de l'equipe, contraintes de design,
-compromis deja actes.
+précis d'un projet : conventions de l'équipe, contraintes de design,
+compromis déjà actés.
 
 ### How to review AI-generated code
 
-Relire du code genere demande plus d'attention que relire le sien, parce qu'il
-est toujours plausible en surface. Quelques points de controle :
+Relire du code généré demande plus d'attention que relire le sien, parce qu'il
+est toujours plausible en surface. Quelques points de contrôle :
 
-- verifier chaque import et chaque chemin relatif
-- verifier que les noms de props correspondent des deux cotes
-- verifier que les classes CSS existent reellement, une classe inventee ne
+- vérifier chaque import et chaque chemin relatif
+- vérifier que les noms de props correspondent des deux côtés
+- vérifier que les classes CSS existent réellement, une classe inventée ne
   provoque aucune erreur et ne fait simplement rien
-- se mefier du code qui fait plus que demande
-- refuser tout bloc qu'on ne saurait pas reecrire soi-meme
+- se méfier du code qui fait plus que demandé
+- refuser tout bloc qu'on ne saurait pas réécrire soi-même
 
 Le signal d'alerte principal est le code qui marche sans qu'on sache pourquoi.
-S'il casse plus tard, on sera incapable de le reparer.
+S'il casse plus tard, on sera incapable de le réparer.
 
 ### How to validate AI-generated code
 
-La relecture ne suffit pas, il faut une verification mecanique :
+La relecture ne suffit pas, il faut une vérification mécanique :
 
 ```bash
 npm run lint
 npm run build
 ```
 
-Un point important appris en pratique : ESLint ne verifie pas la resolution des
-chemins d'import. Apres un deplacement de fichiers, un lint vert ne prouve rien,
+Un point important appris en pratique : ESLint ne vérifie pas la résolution des
+chemins d'import. Après un déplacement de fichiers, un lint vert ne prouve rien,
 seul le build le fait.
 
-Ensuite viennent les verifications que l'outillage ne fait pas :
+Ensuite viennent les vérifications que l'outillage ne fait pas :
 
 - comparer le rendu au maquettage, section par section
-- tester les interactions a la main, y compris les cas d'erreur
-- naviguer au clavier et verifier les etats de focus
+- tester les interactions à la main, y compris les cas d'erreur
+- naviguer au clavier et vérifier les états de focus
 - passer un audit Lighthouse
 
-En l'absence de tests automatises, l'oeil humain reste le test.
+En l'absence de tests automatisés, l'œil humain reste le test.
 
 ### Why understanding generated code remains essential
 
-Trois raisons concretes.
+Trois raisons concrètes.
 
-**Le debogage.** Une IA produit souvent du code qui fonctionne par accident, ou
-qui echoue silencieusement. Une balise JSX en minuscule ne provoque aucune
-erreur mais n'affiche rien. Une classe Tailwind mal orthographiee est ignoree
-sans avertissement. Sans comprendre le mecanisme, ces bugs sont introuvables.
+**Le débogage.** Une IA produit souvent du code qui fonctionne par accident, ou
+qui échoue silencieusement. Une balise JSX en minuscule ne provoque aucune
+erreur mais n'affiche rien. Une classe Tailwind mal orthographiée est ignorée
+sans avertissement. Sans comprendre le mécanisme, ces bugs sont introuvables.
 
-**La maintenance.** Un projet vit plus longtemps que le moment ou il a ete
-ecrit. Il faudra le modifier, l'etendre, l'expliquer a quelqu'un d'autre. Du
-code qu'on ne comprend pas est une dette immediate.
+**La maintenance.** Un projet vit plus longtemps que le moment où il a été
+écrit. Il faudra le modifier, l'étendre, l'expliquer à quelqu'un d'autre. Du
+code qu'on ne comprend pas est une dette immédiate.
 
-**La responsabilite.** L'IA n'est pas responsable de ce qu'elle produit, le
-developpeur l'est. Elle peut affirmer avec assurance quelque chose de faux :
-une valeur de contraste incorrecte, une regle d'accessibilite inventee, une
-API qui n'existe pas dans la version utilisee. Seul quelqu'un qui comprend le
-sujet peut reperer l'erreur.
+**La responsabilité.** L'IA n'est pas responsable de ce qu'elle produit, le
+développeur l'est. Elle peut affirmer avec assurance quelque chose de faux :
+une valeur de contraste incorrecte, une règle d'accessibilité inventée, une
+API qui n'existe pas dans la version utilisée. Seul quelqu'un qui comprend le
+sujet peut repérer l'erreur.
 
-La bonne posture est celle d'une revue de code : l'IA propose, le developpeur
-decide. Faire ecrire pour aller plus vite est legitime ; accepter sans
+La bonne posture est celle d'une revue de code : l'IA propose, le développeur
+décide. Faire écrire pour aller plus vite est légitime ; accepter sans
 comprendre ne l'est pas.
